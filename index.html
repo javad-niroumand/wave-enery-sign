@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Insurance Options</title>
+<style>
+body {
+  font-family: Inter, sans-serif;
+  margin: 0;
+  background: #582d7d;
+  color: #e6eef8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.logo {
+  display: block;
+  width: 140px;
+  margin: 20px auto;
+}
+
+/* Option buttons */
+.option-button {
+  width: 90%;
+  max-width: 350px;
+  background: #6b3ea1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  border: 3px solid transparent;
+}
+
+.option-button.selected {
+  border-color: #ffcc00;
+}
+
+.option-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.option-button img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.option-button span {
+  display: block;
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Submit button */
+.submit-btn {
+  width: 90%;
+  max-width: 350px;
+  padding: 14px 0;
+  background: #ffcc00;
+  color: #582d7d;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+/* Centered toast message */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffcc00;
+  color: #582d7d;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+</style>
+</head>
+<body>
+
+<img class="logo" src="https://github.com/javad-niroumand/Lisa/blob/main/ChatGPT%20Image%20Nov%2025,%202025,%2002_43_24%20PM%20(1).png?raw=true" alt="Bank Logo">
+
+<div class="option-button" data-option="Klassische Reiseversicherung">
+  <img src="https://cdn-res.keymedia.com/cdn-cgi/image/w=1200,h=600,f=auto/https://cdn-res.keymedia.com/cms/images/us/024/0270_638471617514047767.jpg" alt="Klassische Reiseversicherung">
+  <span>Klassische Reiseversicherung</span>
+</div>
+
+<div class="option-button" data-option="Individualisierte Reiseversicherung per Wave-Banking App">
+  <img src="https://www.careinsurance.com/upload_master/media/posts/November2019/k37sbhslnamsiIdieYw3.jpg" alt="Individualisierte Reiseversicherung">
+  <span>Individualisierte Reiseversicherung per Wave-Banking App</span>
+</div>
+
+<button class="submit-btn" id="submitBtn">Auswahl bestätigen</button>
+
+<div id="toast" class="toast"></div>
+
+<script>
+let selectedOption = null;
+
+// Handle option selection
+const options = document.querySelectorAll('.option-button');
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    options.forEach(o => o.classList.remove('selected'));
+    option.classList.add('selected');
+    selectedOption = option.dataset.option;
+  });
+});
+
+// Toast function
+function showToast(message, duration = 2000) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, duration);
+}
+
+// Handle submit
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.addEventListener('click', () => {
+  if(!selectedOption) {
+    showToast('Bitte wählen Sie eine Option aus.');
+    return;
+  }
+
+  showToast(`Sie haben "${selectedOption}" gewählt.`, 1500);
+
+  // Redirect after toast
+  setTimeout(() => {
+    window.location.href = 'https://checklist-puqcch4pf-javad-niroumands-projects.vercel.app/' + encodeURIComponent(selectedOption);
+  }, 1500);
+});
+</script>
+
+</body>
+</html>
