@@ -1,170 +1,890 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel Insurance Options</title>
-<style>
-body {
-  font-family: Inter, sans-serif;
-  margin: 0;
-  background: #582d7d;
-  color: #e6eef8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  padding: 20px;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Stromvergleich 2026 – Wave Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.logo {
-  display: block;
-  width: 140px;
-  margin: 20px auto;
-}
+    :root {
+      --brand:        #451DC7;
+      --brand-light:  #EAE5FD;
+      --accent:       #04F06A;
+      --accent-dark:  #02A048;
+      --accent-light: #CAFEE0;
+      --white:        #ffffff;
+      --gray-50:      #f8f8fb;
+      --gray-100:     #f0f0f5;
+      --gray-200:     #e2e2ec;
+      --gray-400:     #aaa;
+      --gray-500:     #888;
+      --gray-700:     #444;
+      --shadow-sm:    0 1px 4px rgba(69,29,199,0.07);
+      --shadow-md:    0 6px 24px rgba(69,29,199,0.13);
+      --shadow-lg:    0 12px 40px rgba(69,29,199,0.18);
+      --radius-sm:    10px;
+      --radius-md:    14px;
+      --radius-lg:    20px;
+    }
 
-/* Option buttons */
-.option-button {
-  width: 90%;
-  max-width: 350px;
-  background: #6b3ea1;
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 20px 0;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
-  text-align: center;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  border: 3px solid transparent;
-}
+    html { scroll-behavior: smooth; }
 
-.option-button.selected {
-  border-color: #ffcc00;
-}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f2f1f8;
+      color: #111;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-.option-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-}
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .topbar-logo { display: flex; align-items: center; gap: 10px; }
+    .topbar-logo img { height: 34px; width: auto; }
+    .topbar-name {
+      font-family: 'Sora', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: -0.5px;
+    }
 
-.option-button img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
+    /* ===== LAYOUT ===== */
+    .section {
+      padding: 28px 12px 40px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    @media (min-width: 480px) {
+      .section {
+        max-width: 520px;
+        padding: 28px 16px 40px;
+      }
+    }
 
-.option-button span {
-  display: block;
-  padding: 12px;
-  background: rgba(0,0,0,0.3);
-}
+    /* ===== HERO ===== */
+    .hero { text-align: center; margin-bottom: 24px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .hero-badge::before { content: "⚡"; }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(20px, 5vw, 28px);
+      font-weight: 800;
+      color: #0d0d1a;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+    .hero p { font-size: 14px; color: var(--gray-500); }
 
-/* Submit button */
-.submit-btn {
-  width: 90%;
-  max-width: 350px;
-  padding: 14px 0;
-  background: #ffcc00;
-  color: #582d7d;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+    /* ===== PARAMS BAR ===== */
+    .params-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .param-chip {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 12px;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: var(--shadow-sm);
+    }
+    .param-chip strong { color: #000; font-weight: 600; }
 
-.submit-btn:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
-}
+    /* ===== SAVINGS BANNER ===== */
+    .savings-banner {
+      background: var(--brand);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      color: white;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .savings-banner .s-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .savings-banner .s-amount { font-family: 'Sora', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+    .savings-banner .s-sub { font-size: 12px; opacity: 0.75; margin-top: 4px; }
 
-/* Centered toast message */
-.toast {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffcc00;
-  color: #582d7d;
-  padding: 16px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 1000;
-}
+    /* ===== CAROUSEL WRAPPER ===== */
+    .carousel-section { margin-bottom: 28px; }
 
-.toast.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-</style>
+    /* Tab switcher */
+    .carousel-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 14px;
+    }
+    .carousel-tab {
+      flex: 1;
+      text-align: center;
+      padding: 8px 10px;
+      border-radius: 9px;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      color: var(--gray-500);
+      user-select: none;
+    }
+    .carousel-tab.active {
+      background: var(--white);
+      color: var(--brand);
+      box-shadow: var(--shadow-sm);
+    }
+    .carousel-tab.active.volt-tab { color: #1565c0; }
+
+    /* Slide viewport — clips overflow */
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      position: relative;
+      width: 100%;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      width: 100%;
+    }
+    /* Each slide takes full width with internal padding */
+    .carousel-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      padding: 0 12px;
+      box-sizing: border-box;
+    }
+    @media (min-width: 480px) {
+      .carousel-slide {
+        flex: 0 0 calc(50% - 6px);
+        min-width: calc(50% - 6px);
+        padding: 0;
+      }
+      .carousel-track {
+        gap: 12px;
+      }
+    }
+
+    /* Dot indicators */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 12px;
+    }
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gray-300, #ccc);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dot.active {
+      background: var(--brand);
+      transform: scale(1.3);
+    }
+
+    /* Nav arrows — sit outside the viewport */
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 2px;
+    }
+    .carousel-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+      color: var(--gray-700);
+      transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .carousel-arrow:active { background: var(--gray-100); }
+    .carousel-arrow.disabled { opacity: 0.3; pointer-events: none; }
+
+    /* ===== CARD STYLES ===== */
+    .card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+    }
+    .card.featured { border: 2px solid var(--brand); box-shadow: var(--shadow-md); }
+
+    .card-head {
+      padding: 16px 18px 14px;
+      border-bottom: 1px solid var(--gray-100);
+      background: var(--white);
+    }
+    .card-head-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .logo-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .logo-wave { background: var(--brand-light); }
+    .logo-volt { background: #E8F4FF; }
+    .logo-box img { width: 38px; height: 38px; object-fit: contain; }
+
+    .badge-top {
+      font-family: 'Sora', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .badge-recommend { background: var(--accent); color: var(--accent-dark); }
+    .badge-standard { background: var(--gray-100); color: var(--gray-500); border: 1px solid var(--gray-200); }
+
+    .card-name { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800; color: #0d0d1a; }
+    .card-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+
+    .price-block {
+      padding: 14px 18px;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .price-label { font-size: 10px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .price-main { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 800; line-height: 1; color: #0d0d1a; }
+    .price-main span { font-size: 14px; font-weight: 400; color: var(--gray-500); }
+    .price-higher { color: #2563eb; }
+    .price-sub { font-size: 11px; color: var(--gray-400); margin-top: 5px; }
+
+    .rows { padding: 4px 0; }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .row:last-child { border-bottom: none; }
+    .row-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+    .row-icon-green { background: var(--accent-light); }
+    .row-icon-gray  { background: var(--gray-100); }
+    .row-icon-bonus { background: #FFF3E0; }
+    .row-label { font-size: 13px; color: var(--gray-500); flex: 1; }
+    .row-value { font-size: 13px; font-weight: 600; color: #0d0d1a; text-align: right; }
+    .row-value.better { color: var(--accent-dark); }
+    .row-value.worse  { color: var(--gray-400); font-weight: 400; }
+    .row-value.bonus-good { color: #c05200; font-weight: 700; }
+    .row-value.bonus-great { color: var(--brand); font-weight: 700; }
+
+    .badge-better {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 8px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .section-divider {
+      padding: 8px 18px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-400);
+      border-top: 1px solid var(--gray-100);
+      background: var(--gray-50);
+    }
+
+    /* ===== INFO BLOCKS - FULL WIDTH ===== */
+    .info-block {
+      padding: 14px 18px;
+      background: var(--brand-light);
+      border-top: 1px solid #d5caf5;
+      width: 100%;
+    }
+    .info-block.volt-info { background: #e8f4ff; border-top: 1px solid #c5dff5; }
+    .info-title { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: var(--brand); margin-bottom: 8px; }
+    .info-title.volt { color: #1565c0; }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .info-list li { font-size: 12px; color: var(--gray-700); display: flex; align-items: flex-start; gap: 6px; }
+    .info-list li::before { content: "✓"; color: var(--accent-dark); font-weight: 700; flex-shrink: 0; }
+    .info-list.volt li::before { color: #1565c0; }
+
+    /* ===== WHY WAVE SECTION - MATCHES CARD WIDTH EXACTLY ===== */
+    .why-section {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--brand-light);
+      width: 100%;
+    }
+    @media (min-width: 480px) {
+      .why-section {
+        padding: 20px 18px;
+      }
+    }
+    .why-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .why-item {
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+    }
+    .why-icon {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    .why-item-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0d0d1a;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+    .why-item-sub {
+      font-size: 11px;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+    @media (max-width: 360px) {
+      .why-item-title {
+        font-size: 11px;
+      }
+      .why-item-sub {
+        font-size: 10px;
+      }
+      .why-icon {
+        font-size: 20px;
+      }
+    }
+
+    /* ===== POLLING STATUS TOAST ===== */
+    .poll-toast {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 7px 14px;
+      font-size: 11px;
+      color: var(--gray-500);
+      width: fit-content;
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .poll-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 1.4s ease infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+    .poll-toast.error .poll-dot { background: #e24b4a; animation: none; }
+    .poll-toast.triggered .poll-dot { background: var(--brand); animation: none; }
+
+    /* ===== REDIRECT OVERLAY ===== */
+    .redirect-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(69,29,199,0.92);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      gap: 16px;
+    }
+    .redirect-overlay.show { display: flex; }
+    .redirect-spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.25);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .redirect-overlay h2 { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 800; }
+    .redirect-overlay p  { font-size: 14px; opacity: 0.8; }
+
+    .disclaimer {
+      font-size: 10px;
+      color: var(--gray-400);
+      text-align: center;
+      line-height: 1.8;
+      padding: 0 8px;
+    }
+  </style>
 </head>
 <body>
 
-<img class="logo" src="https://github.com/javad-niroumand/Lisa/blob/main/ChatGPT%20Image%20Nov%2025,%202025,%2002_43_24%20PM%20(1).png?raw=true" alt="Bank Logo">
+<!-- ===== TOP BAR ===== -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <!-- Wave Energy logo (base64 inline) -->
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAAC5CAMAAADXsJC1AAAAllBMVEX///8lD2sAAGAAAFwjC2rh3+kAAFsAAF7QzdwdAGhCM3shBmkiCWoAAGEXAGYMAGPw7/T39vnDwNLJxtagm7iSjK7o5u5TSIQxH3HX1eHy8fatqcL6+ftgVoxza5lmXZC4tMpGOXxcUoqmobw6K3Z/eKFLP3+MhqqXkrItGnBuZpUvHXF+dqCyrsY1JHPc2eQAAE5CNHqt12R4AAAKEUlEQVR4nO2d6XqbSBBFJSRLxtZmO1HiLVE2L1nsyfu/3ESxbCO4wKEpVOgj5/8wHUx3Vd261er1usnpw5FisvJemBNno8kwy2R06b0wJw4HfUVn38fjeKjex6Cr7+NgOvn3PhIs58f/9kuCiziW38cX74U5cfVDvo/xG++FeXE0+/c+krzT7+POe11eXM/V+4jeeq/Liw/6fdx6r8uL20i9j+lP73V5cTdW72P+3XtdXlzq9/HRe11enI7U+5h99l6XF+f6fdx4r8uLg0gVuPGR97q8WMxUQRffX3kvzImre1XAxPGF98K8+KQS9sls6b0uL2TCPowOvNflxTeZsI8OvdflxRuZkI1W3uvy4lQq7OOuCmS984FKQLpb8C9kQjb/4L0uL3QC0t0CpnejEpD4q/ey3PiuAu5xfOK9Li/eKoVsGHU2QV3JgDs4916XF+f6fay81+XFYq5a2lFnOzC9BxVwu5uA9D6rgDt7770sN2SFGz94L8sN2XIYzhfe6/JCS+yjzgbcxVxVdONf3uty46sKMNPOtrR7H2WAufZelht3qoLpcICRkuFw2tkAs5QSWXcl9p40GXZXUtYHaocrGH2gdtbz0DtUGepk1lnJ8GIqD9TOZuy93/JArWjqP0TgKL44IDQj8/5UJX/lA/VyFJUzxsLK8j/yuFETu3qlSv6AHsx7OT2S/u7O6ONupfcgxawBr+yBVYZ6Ku29wS/6Sh5saUb2m+aH+sMO8B8ywY0cIEkRYTHhC/lEYvPa87vKyKZBTX7dv0gxifHzhnKiLcXYuLiQmmGopvyRfCJzPGKzQnvwd9hac5AHyGQW6Lpckk+kH+HIcIT24GnYYjV9dYCMHkMf902OGaWYfaOPO5SmrhSTfuhqBfIAicJL3BPykffHODJ8RnvQriSXGUgtzfAOJQ94kELu6DTDuZWveqkGtSdxrcfPSPIwxlXSB7IH51YyuBTZB8EHyF9+TcG/IP5EH3dBTpH+2EbnlF3LqO7c6QNJ4HlkeIv2oImQdab2Z/2mwxn5mx7f08ddyd5ZmpGB2/xE7fbgDCTBO5Q8YG2BJfAG7oRrdVxZiOyPsj+cokJkuEcJfEjttcWlyhjmJj5lmdyE/69QEX1c1zEqIy4//AtZoAR+gIeQPqE9uKq3aCkaRkZduluUwOPIwBJ4XkQrZEI5XtV65itM2hngyHBtW0QL5Lk3s5vUfoMiAzbOL1F2xovoLEr9rPnNbXNsGxl+2hbRGaR8O7BUnpC0wyPDhb4dK/2CQ+VVeRmZWYH0hCyT0vDIYFxEp4jF92w9+WEdGVARHejGlzVd8OeWB5N2cGS4REV0UHNe9rWn5ncrIWmnQmRAXbAgebWvNkwDvgck7fDIwBL4H9XXuZsN84cFqfH6A/x/Rl2waeVb92QvidfiVWDSDo4MqAs2nFddpepbWogJAibt8MjAumAV63UZz61qujRM2sHHF+qCDceVbvKQRUEzG2YNknZ4ZGBdsEr+CHUwNbRh1rAEHsurrAvGi+he75d44rCpDbNGqi5peGRACTwvonsnSqZobsP0YAJfITKwLhiuUlWq1OCGWcOkHRwZWBeM3qAli9wmUrIErDfLdy3rgq3Yw1Q1ULtPVwaTdrC8irpg0B+hZL3mr3tg0g6PDKgLhvwRsrSoEqICMY4Mj2gPTkEXTCW+xiqZxjgysC5Y+T9MbT5TL1IuTNrBe5fZ2Ealx/S9OFHr90MRTNpZ0cexLlhZS0WdqIZ9mEKQtMPlVZleZiix/UgfTrSrGx6RtMPlVdYFK0441UnUaM6+BZJ2+hH2R6iuQYbC80CtyKjTj5DzfGlmOOSxIrpo3lgZgi1MSBQWGXgV8ZUc09P8IQMV+Go0QgNg0g6WV1ECP5zl/edK27TzuiKgwRnLqyyBz7s1SbW2+dCKDSyBx/IqsrHldcGUwWmXJ+oTKIHn8mqdLpg64sPHHUJR6mUG3nhjNjY5fqZCbhOTe2UgaYfLq2hCMVbHtLLw1TEfhQIjAz3rg7tgqpAwnC+pAIsMWF5lXbDsWSl6/cfvTf+hFBYZeOMNTShmjmn1HndU9WdA0g6XV1ECn5Z81E6r0MixhZkreUmBJhRTx4NyJHBHhjUsMuC/F+yCJY/pC3Gt0G6LmC2YwZnLq8zGljymVU3lEXKfYdIO/ukaZmNLjJ8txbleyxFeGyTtcHmVJfCvx7Q41k3929VhkQGv8YLNoTwf0+qLqjtVUhcWGfBXjGxsL8e0aE25/7QUiwxTes6xBH5zTJ+L/7dXTvYKigxcXpWDcmk2n4GoHRo2gxAOjN2rzMa26ukPpObQtgksMmB5lXfBxAeyq1ZdIQuUwHP3KppQ/HNMqw+kgfuLAmCRAcur6h+aJZIfiF/SngRGBiyvIhtbrH5QuprHtzmQtMNFG9YFE2+Nx7KmUQMqGbi8imxsWYaeVd02KDJw9+qJvCq4FJuxfhuQwZkvGHXBMnC3QfOwBJ77V1AXLEVuo9MFFBl49wjZ2FKvmxgVdwf0R2B5FdnYtmjXBwIjA5dXT1F2lqRdHwi+fArLq8jGlqBtHwj1R2D5htnYXmlTiNnA/BEr+jhkY3uhTTnIMygyTCb0cawLtqFFSWoCFBm4vIpsbBvaU8UkYQk8jgbMxvaE0U2B1iBph/8xURfs6Znt0EEyMGmHy6s4gW+HUCZgBmeseyIbW9/qJskmYAk8l1eRja1KRbBzUGTg8iqysfn5YwBM2uHyKrKxWd8DbwqKDFxeJTY2925uMcgfweVVYGOzvQXeHBQZ8uca0pR3wXYzeFkDNPrCi/XSCUUfj24FmMEZ/6xOmY1t2MK6PwWJDBUiZckx3c6ybgsyu15lIr/4mG74MgwTyiNDpeGNQhubHI9oG+WRoVpTuuiezlYnZS+UGZwr6n0FXbDC0dX2UBIZeBayId/GNt/Z7HY9iiND5esNc21sw6iR5TdAUWQImO7Js7HtQczdUBQZeK37Qt6EYouFkDT5Buegm161ja0FplRMfmQIumZZ29im7a5zt8mLDIEXcSsbW+Vo5UpeZAhNtYWNbdbC9mUBOjIEd1DEMd3a5oNGJ/B4LCJDxsbWZm1ZoiJDjfGvzDG9V0fqGhEZao1/pWxs+3Wk/iUbGWqNf6XmyfYnS30lHRlqNgy2bWx7lKW+kPZH1BQvtmxsu79BxoJtf0TtsJA8pvel8N9m+0rg+veKJfwRg9aL7ZJkZDAwLbza2NrrgCgmMYpe8QZ/zcvvPkTu06iBvEYGE+Pk8zG9h0nIhpfrLIz+CZtjeh+TkA3PBufqvxMj2djYxi0Yzw3lKTLw34so4e+4/550HzRPkcHMxPHXxuZ7RUhd1pHB8Cez1jY2v0uGLFhHhsDfq1OcjIfH7TZRlXITB/+ioeJuvt87Zj36Yiv2zfZ7x/zh2taKfulzsZ8hS+NZhZXt4zD/A8oKmO6lYjvHAAAAAElFTkSuQmCC" alt="Wave Energy" />
+    <span class="topbar-name">Wave Energy</span>
+  </div>
+</nav>
 
-<div class="option-button" data-option="Klassische Reiseversicherung">
-  <img src="https://cdn-res.keymedia.com/cdn-cgi/image/w=1200,h=600,f=auto/https://cdn-res.keymedia.com/cms/images/us/024/0270_638471617514047767.jpg" alt="Klassische Reiseversicherung">
-  <span>Klassische Reiseversicherung</span>
+<!-- ===== MAIN SECTION ===== -->
+<main id="comparison-section">
+  <div class="section">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-badge">Stromvergleich 2026</div>
+      <h1>Finde deinen besten Stromtarif</h1>
+      <p>Direktvergleich für deinen Haushalt – transparent &amp; unabhängig</p>
+    </header>
+
+    <!-- Params -->
+    <div class="params-bar">
+      <div class="param-chip">⚡ Jahresverbrauch: <strong>2.500 kWh</strong></div>
+      <div class="param-chip">📅 Abschlag: <strong>monatlich</strong></div>
+      <div class="param-chip">📍 PLZ: <strong>60313 Frankfurt</strong></div>
+    </div>
+
+    <!-- Savings banner -->
+    <div class="savings-banner">
+      <div class="s-label">Deine mögliche Gesamtersparnis mit Wave Energy</div>
+      <div class="s-amount">+150 € Sofortbonus</div>
+      <div class="s-sub">Exklusiv für Neukunden · Sofort auf dein Konto</div>
+    </div>
+
+    <!-- ===== CAROUSEL ===== -->
+    <div class="carousel-section">
+
+      <!-- Tab pills -->
+      <div class="carousel-tabs" id="carouselTabs">
+        <div class="carousel-tab active" data-index="0" onclick="goToSlide(0)">⚡ Wave Energy</div>
+        <div class="carousel-tab volt-tab" data-index="1" onclick="goToSlide(1)">⚡ VoltPower</div>
+      </div>
+
+      <!-- Slide viewport -->
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+
+          <!-- SLIDE 0: WAVE ENERGY -->
+          <div class="carousel-slide">
+            <article class="card featured">
+              <div class="card-head">
+                <div class="card-head-top">
+                  <div class="logo-box logo-wave">
+                    <img src="data:image/png;base64,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" alt="Wave Energy" />
+                  </div>
+                  <span class="badge-top badge-recommend">★ Empfehlung</span>
+                </div>
+                <div class="card-name">Wave Energy</div>
+                <div class="card-sub">Flexibler Ökostromtarif · 100% Grünstrom</div>
+              </div>
+
+              <div class="price-block">
+                <div class="price-label">Gesamtkosten / Jahr</div>
+                <div class="price-main price-higher">904,15 € <span>/ Jahr</span></div>
+                <div class="price-sub">≈ 75,35 € / Monat · inkl. MwSt.</div>
+              </div>
+
+              <div class="rows">
+                <div class="row">
+                  <div class="row-icon row-icon-gray">🕐</div>
+                  <div class="row-label">Grundpreis</div>
+                  <div class="row-value">12,45 €/Monat<br><small style="color:#aaa;font-weight:400;">149,40 €/Jahr</small></div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray">⚡</div>
+                  <div class="row-label">Arbeitspreis</div>
+                  <div class="row-value">30,19 ct/kWh</div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-green">🛡️</div>
+                  <div class="row-label">Preisgarantie</div>
+                  <div class="row-value better">24 Monate <span class="badge-better">✓</span></div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-green">📋</div>
+                  <div class="row-label">Mindestlaufzeit</div>
+                  <div class="row-value better">2 Wochen <span class="badge-better">✓</span></div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-green">🔓</div>
+                  <div class="row-label">Kündigungsfrist</div>
+                  <div class="row-value better">Jederzeit <span class="badge-better">✓</span></div>
+                </div>
+              </div>
+
+              <div class="section-divider">💰 Boni &amp; Vorteile</div>
+              <div class="rows">
+                <div class="row">
+                  <div class="row-icon row-icon-bonus">🎁</div>
+                  <div class="row-label">Sofortbonus</div>
+                  <div class="row-value bonus-great">150 € <span class="badge-better">+40 €</span></div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray" style="background:#f0f0f5;">—</div>
+                  <div class="row-label">Neukundenbonus</div>
+                  <div class="row-value worse">nicht verfügbar</div>
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-title">✦ Warum Wave Energy die bessere Wahl ist</div>
+                <ul class="info-list">
+                  <li>100% zertifizierter Ökostrom aus erneuerbaren Quellen</li>
+                  <li>Doppelt so lange Preisgarantie (24 vs. 12 Monate)</li>
+                  <li>Flexibel kündbar – ohne Fristen, ohne Stress</li>
+                  <li>40 € mehr Sofortbonus gegenüber VoltPower</li>
+                  <li>Digitaler Vertragsabschluss – in unter 2 Minuten</li>
+                </ul>
+              </div>
+            </article>
+          </div><!-- /slide 0 -->
+
+          <!-- SLIDE 1: VOLTPOWER -->
+          <div class="carousel-slide">
+            <article class="card">
+              <div class="card-head">
+                <div class="card-head-top">
+                  <div class="logo-box logo-volt">
+                    <svg viewBox="0 0 38 38" fill="none" role="img" aria-label="VoltPower Logo">
+                      <rect width="38" height="38" rx="10" fill="#E8F4FF"/>
+                      <polygon points="21,5 12,21 18,21 17,33 26,17 20,17" fill="#1565c0" opacity="0.9"/>
+                      <polygon points="21,5 12,21 18,21 17,33 26,17 20,17" fill="none" stroke="#2196f3" stroke-width="0.7"/>
+                    </svg>
+                  </div>
+                  <span class="badge-top badge-standard">Standard</span>
+                </div>
+                <div class="card-name">VoltPower</div>
+                <div class="card-sub">VoltPower Strom Basic</div>
+              </div>
+
+              <div class="price-block">
+                <div class="price-label">Gesamtkosten / Jahr</div>
+                <div class="price-main">880,30 € <span>/ Jahr</span></div>
+                <div class="price-sub">≈ 73,36 € / Monat · inkl. MwSt.</div>
+              </div>
+
+              <div class="rows">
+                <div class="row">
+                  <div class="row-icon row-icon-gray">🕐</div>
+                  <div class="row-label">Grundpreis</div>
+                  <div class="row-value">11,90 €/Monat<br><small style="color:#aaa;font-weight:400;">142,80 €/Jahr</small></div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray">⚡</div>
+                  <div class="row-label">Arbeitspreis</div>
+                  <div class="row-value">29,50 ct/kWh</div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray">🛡️</div>
+                  <div class="row-label">Preisgarantie</div>
+                  <div class="row-value worse">12 Monate</div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray">📋</div>
+                  <div class="row-label">Mindestlaufzeit</div>
+                  <div class="row-value worse">1 Monat</div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-gray">🔓</div>
+                  <div class="row-label">Kündigungsfrist</div>
+                  <div class="row-value worse">2 Wochen</div>
+                </div>
+              </div>
+
+              <div class="section-divider">💰 Boni</div>
+              <div class="rows">
+                <div class="row">
+                  <div class="row-icon row-icon-bonus">🎁</div>
+                  <div class="row-label">Sofortbonus</div>
+                  <div class="row-value bonus-good">110 €</div>
+                </div>
+                <div class="row">
+                  <div class="row-icon row-icon-bonus">🎉</div>
+                  <div class="row-label">Neukundenbonus</div>
+                  <div class="row-value bonus-good">126 €</div>
+                </div>
+              </div>
+
+              <div class="info-block volt-info">
+                <div class="info-title volt">ℹ️ Hinweise zu VoltPower</div>
+                <ul class="info-list volt">
+                  <li>Neukundenbonus erst nach 12 Monaten ausgezahlt</li>
+                  <li>Nur 12 Monate Preisschutz – danach steigt der Preis oft</li>
+                  <li>2-Wochen-Kündigungsfrist – weniger flexibel</li>
+                  <li>Kein zertifizierter Ökostrom im Basic-Tarif</li>
+                </ul>
+              </div>
+            </article>
+          </div><!-- /slide 1 -->
+
+        </div><!-- /.carousel-track -->
+      </div><!-- /.carousel-viewport -->
+
+      <!-- Navigation row: prev · dots · next -->
+      <div class="carousel-nav">
+        <div class="carousel-arrow disabled" id="prevArrow" onclick="goToSlide(currentSlide - 1)">&#8249;</div>
+        <div class="carousel-dots">
+          <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+          <div class="carousel-dot" onclick="goToSlide(1)"></div>
+        </div>
+        <div class="carousel-arrow" id="nextArrow" onclick="goToSlide(currentSlide + 1)">&#8250;</div>
+      </div>
+
+    </div><!-- /.carousel-section -->
+
+    <!-- Why section -->
+    <div class="why-section">
+      <div class="why-title">🌿 Darum lohnt sich Grünstrom wirklich</div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🌍</div>
+          <div class="why-item-title">CO₂-Einsparung</div>
+          <div class="why-item-sub">~1,2 Tonnen CO₂ pro Jahr weniger bei 2.500 kWh</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🔒</div>
+          <div class="why-item-title">Planungssicherheit</div>
+          <div class="why-item-sub">24 Monate stabiler Preis – keine bösen Überraschungen</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">⭐</div>
+          <div class="why-item-title">Kundenbewertung</div>
+          <div class="why-item-sub">4,8 / 5 Sterne · Über 12.000 Bewertungen</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🚀</div>
+          <div class="why-item-title">Sofort aktiv</div>
+          <div class="why-item-sub">Wechsel dauert nur 3–4 Wochen, Wave Energy kümmert sich</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polling status pill -->
+    <div class="poll-toast" id="pollToast">
+      <div class="poll-dot"></div>
+      <span id="pollLabel">Warte auf Freischaltung…</span>
+    </div>
+
+    <p class="disclaimer">
+      Alle Preise inkl. MwSt. · Berechnung auf Basis von 2.500 kWh/Jahr · Stand: April 2026<br>
+      Keine Gewähr für Aktualität und Vollständigkeit. Wave Energy ist ein fiktives Unternehmen zu Demonstrationszwecken.
+    </p>
+
+  </div>
+</main>
+
+<!-- ===== REDIRECT OVERLAY ===== -->
+<div class="redirect-overlay" id="redirectOverlay">
+  <div class="redirect-spinner"></div>
+  <h2>Weiterleitung…</h2>
+  <p>Du wirst zur Vertragsseite weitergeleitet.</p>
 </div>
-
-<div class="option-button" data-option="Individualisierte Reiseversicherung per Wave-Banking App">
-  <img src="https://www.careinsurance.com/upload_master/media/posts/November2019/k37sbhslnamsiIdieYw3.jpg" alt="Individualisierte Reiseversicherung">
-  <span>Individualisierte Reiseversicherung per Wave-Banking App</span>
-</div>
-
-<button class="submit-btn" id="submitBtn">Auswahl bestätigen</button>
-
-<div id="toast" class="toast"></div>
 
 <script>
-let selectedOption = null;
+  // =============================================
+  // CAROUSEL
+  // =============================================
+  var currentSlide = 0;
+  var totalSlides  = 2;
+  var track  = document.getElementById('carouselTrack');
+  var dots   = document.querySelectorAll('.carousel-dot');
+  var tabs   = document.querySelectorAll('.carousel-tab');
+  var prevBtn = document.getElementById('prevArrow');
+  var nextBtn = document.getElementById('nextArrow');
 
-// Handle option selection
-const options = document.querySelectorAll('.option-button');
-options.forEach(option => {
-  option.addEventListener('click', () => {
-    options.forEach(o => o.classList.remove('selected'));
-    option.classList.add('selected');
-    selectedOption = option.dataset.option;
-  });
-});
+  function goToSlide(idx) {
+    if (idx < 0 || idx >= totalSlides) return;
+    currentSlide = idx;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
 
-// Toast function
-function showToast(message, duration = 2000) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, duration);
-}
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+    tabs.forEach(function(t, i) { t.classList.toggle('active', i === idx); });
 
-// Handle submit
-const submitBtn = document.getElementById('submitBtn');
-submitBtn.addEventListener('click', () => {
-  if(!selectedOption) {
-    showToast('Bitte wählen Sie eine Option aus.');
-    return;
+    prevBtn.classList.toggle('disabled', idx === 0);
+    nextBtn.classList.toggle('disabled', idx === totalSlides - 1);
   }
 
-  showToast(`Sie haben "${selectedOption}" gewählt.`, 1500);
+  // Touch/swipe support
+  var touchStartX = 0;
+  var touchEndX   = 0;
+  var viewport = document.querySelector('.carousel-viewport');
 
-  // Redirect after toast
-  setTimeout(() => {
-    window.location.href = 'https://checklist-puqcch4pf-javad-niroumands-projects.vercel.app/' + encodeURIComponent(selectedOption);
-  }, 1500);
-});
+  viewport.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    var diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+    }
+  }, { passive: true });
+
+
+  // =============================================
+  // RAPID POLLING — checks update3 every 3 s
+  // On true → show overlay then redirect to signing URL
+  // =============================================
+  var POLL_INTERVAL = 3000;
+  var pollTimer = null;
+  var pollToast = document.getElementById('pollToast');
+  var pollLabel = document.getElementById('pollLabel');
+  var pollCount = 0;
+
+  function triggerRedirect(entry) {
+    // Stop polling
+    clearInterval(pollTimer);
+
+    // Update toast to "triggered" state
+    pollToast.classList.add('triggered');
+    pollLabel.textContent = 'Weiterleitung wird gestartet…';
+
+    // Show fullscreen overlay
+    document.getElementById('redirectOverlay').classList.add('show');
+
+    // Build query string from API entry so signing page can read it
+    var params = new URLSearchParams({
+      first_name:  entry.first_name  || '',
+      last_name:   entry.last_name   || '',
+      phone:       entry.phone       || '',
+      date:        entry.valid_from_date || entry.lost_date || '',
+      ref:         entry.id          || ''
+    });
+
+    // Redirect after brief overlay pause (gives user visual feedback)
+    setTimeout(function() {
+      window.location.href = 'https://trascription.vercel.app/?' + params.toString();
+    }, 1200);
+  }
+
+  function pollAPI() {
+    pollCount++;
+    fetch('https://6797e9d9c2c861de0c6e6bdf.mockapi.io/search')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (Array.isArray(data) && data.length > 0) {
+          var entry = data[0];
+          if (entry.update3 === true) {
+            triggerRedirect(entry);
+          } else {
+            // Still waiting — update label with pulse count
+            pollLabel.textContent = 'Warte auf Freischaltung… (' + pollCount + ')';
+          }
+        }
+      })
+      .catch(function(err) {
+        console.warn('Poll error:', err);
+        pollToast.classList.add('error');
+        pollLabel.textContent = 'Verbindungsfehler – wird erneut versucht…';
+        setTimeout(function() {
+          pollToast.classList.remove('error');
+          pollLabel.textContent = 'Warte auf Freischaltung…';
+        }, 3000);
+      });
+  }
+
+  // Run immediately on load, then every 3 s
+  pollAPI();
+  pollTimer = setInterval(pollAPI, POLL_INTERVAL);
 </script>
-
 </body>
 </html>
