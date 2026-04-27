@@ -135,8 +135,22 @@
       padding: 16px 18px;
       color: white;
       text-align: center;
-      margin-bottom: 24px;
       box-shadow: var(--shadow-md);
+      overflow: hidden;
+      max-height: 120px;
+      margin-bottom: 24px;
+      opacity: 1;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.25s ease,
+                  margin-bottom 0.35s ease,
+                  padding 0.35s ease;
+    }
+    .savings-banner.hidden {
+      max-height: 0;
+      opacity: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
     .savings-banner .s-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
     .savings-banner .s-amount { font-family: 'Sora', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -1px; }
@@ -441,15 +455,9 @@
       line-height: 1.4;
     }
     @media (max-width: 360px) {
-      .why-item-title {
-        font-size: 11px;
-      }
-      .why-item-sub {
-        font-size: 10px;
-      }
-      .why-icon {
-        font-size: 20px;
-      }
+      .why-item-title { font-size: 11px; }
+      .why-item-sub   { font-size: 10px; }
+      .why-icon       { font-size: 20px; }
     }
 
     /* ===== POLLING STATUS TOAST ===== */
@@ -546,9 +554,8 @@
       <div class="param-chip">📍 PLZ: <strong>60313 Frankfurt</strong></div>
     </div>
 
-    <!-- Savings banner -->
-    <!-- CHANGED: "Wave Energy" is now bold + green, rest remains the same -->
-    <div class="savings-banner">
+    <!-- Savings banner — hidden class toggled by goToSlide() -->
+    <div class="savings-banner" id="savingsBanner">
       <div class="s-label">Deine Ersparnis mit <span class="brand-highlight">Wave Energy</span></div>
       <div class="s-amount">+150 € Sofortbonus</div>
       <div class="s-sub">Exklusiv für Neukunden · Sofort auf dein Konto</div>
@@ -581,7 +588,6 @@
                 <div class="card-sub">Flexibler Ökostromtarif · 100% Grünstrom</div>
               </div>
 
-              <!-- CHANGED: Monthly price is now primary/bold, yearly is secondary -->
               <div class="price-block">
                 <div class="price-label">Monatliche Kosten</div>
                 <div class="price-main price-higher">75,35 € <span>/ Monat</span></div>
@@ -594,7 +600,6 @@
                   <div class="row-label">Grundpreis</div>
                   <div class="row-value">12,45 €/Monat<br><small style="color:#aaa;font-weight:400;">149,40 €/Jahr</small></div>
                 </div>
-                <!-- CHANGED: Arbeitspreis from 30,19 to 29,89 -->
                 <div class="row">
                   <div class="row-icon row-icon-gray">⚡</div>
                   <div class="row-label">Arbeitspreis</div>
@@ -619,7 +624,6 @@
 
               <div class="section-divider">💰 Boni &amp; Vorteile</div>
               <div class="rows">
-                <!-- CHANGED: removed "+40 €" badge from Sofortbonus -->
                 <div class="row">
                   <div class="row-icon row-icon-bonus">🎁</div>
                   <div class="row-label">Sofortbonus</div>
@@ -663,7 +667,6 @@
                 <div class="card-sub">VoltPower Strom Basic</div>
               </div>
 
-              <!-- CHANGED: Monthly price is now primary/bold, yearly is secondary -->
               <div class="price-block">
                 <div class="price-label">Monatliche Kosten</div>
                 <div class="price-main">73,36 € <span>/ Monat</span></div>
@@ -698,9 +701,14 @@
                 </div>
               </div>
 
-              <!-- CHANGED: Sofortbonus row removed entirely for VoltPower -->
               <div class="section-divider">💰 Boni</div>
               <div class="rows">
+                <!-- Sofortbonus row — shows "nicht verfügbar" for VoltPower -->
+                <div class="row">
+                  <div class="row-icon row-icon-gray" style="background:#f0f0f5;">—</div>
+                  <div class="row-label">Sofortbonus</div>
+                  <div class="row-value worse">nicht verfügbar</div>
+                </div>
                 <div class="row">
                   <div class="row-icon row-icon-bonus">🎉</div>
                   <div class="row-label">Neukundenbonus</div>
@@ -789,11 +797,12 @@
   // =============================================
   var currentSlide = 0;
   var totalSlides  = 2;
-  var track  = document.getElementById('carouselTrack');
-  var dots   = document.querySelectorAll('.carousel-dot');
-  var tabs   = document.querySelectorAll('.carousel-tab');
-  var prevBtn = document.getElementById('prevArrow');
-  var nextBtn = document.getElementById('nextArrow');
+  var track        = document.getElementById('carouselTrack');
+  var dots         = document.querySelectorAll('.carousel-dot');
+  var tabs         = document.querySelectorAll('.carousel-tab');
+  var prevBtn      = document.getElementById('prevArrow');
+  var nextBtn      = document.getElementById('nextArrow');
+  var savingsBanner = document.getElementById('savingsBanner');
 
   function goToSlide(idx) {
     if (idx < 0 || idx >= totalSlides) return;
@@ -805,6 +814,9 @@
 
     prevBtn.classList.toggle('disabled', idx === 0);
     nextBtn.classList.toggle('disabled', idx === totalSlides - 1);
+
+    // Show banner only on Wave Energy slide (idx === 0)
+    savingsBanner.classList.toggle('hidden', idx !== 0);
   }
 
   // Touch/swipe support
