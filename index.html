@@ -157,6 +157,7 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 10px;
+      gap: 8px;
     }
     .logo-box {
       width: 46px;
@@ -172,6 +173,23 @@
     .logo-wave { background: var(--brand-light); }
     .logo-volt { background: #E8F4FF; }
     .logo-box img { width: 38px; height: 38px; object-fit: contain; }
+
+    /* ===== GEWÜNSCHTER ANBIETER LABEL ===== */
+    .provider-label {
+      flex: 1;
+      text-align: center;
+      font-family: 'Sora', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #1565c0;
+      background: #e8f4ff;
+      border: 1px solid #c5dff5;
+      border-radius: 10px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
 
     .badge-top {
       font-family: 'Sora', sans-serif;
@@ -251,6 +269,29 @@
       background: var(--gray-50);
     }
 
+    /* ===== EFFECTIVE PRICE ROW (VoltPower) ===== */
+    .row-effective {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--gray-100);
+      background: linear-gradient(90deg, #fff8f0 0%, #fff 100%);
+    }
+    .row-effective .row-label { font-size: 13px; color: var(--gray-500); flex: 1; }
+    .row-effective .row-value-effective {
+      font-size: 13px;
+      font-weight: 700;
+      color: #c05200;
+      text-align: right;
+    }
+    .row-effective .row-value-effective small {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--gray-400);
+    }
+
     /* ===== INFO BLOCKS ===== */
     .info-block {
       padding: 14px 18px;
@@ -281,6 +322,115 @@
     .savings-banner .s-sub { font-size: 12px; opacity: 0.75; margin-top: 4px; }
     .savings-banner .brand-highlight { color: #04F06A; font-weight: 800; font-family: 'Sora', sans-serif; }
 
+    /* ===== PRICE COMPARE WIDGET ===== */
+    .price-compare-wrap {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .price-compare-label {
+      font-size: 10px;
+      opacity: 0.7;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .price-compare-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .price-old-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .price-old-val {
+      font-family: 'Sora', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      position: relative;
+    }
+    .price-old-val::after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      top: 50%;
+      height: 2px;
+      background: rgba(255,255,255,0.55);
+      transform: translateY(-50%) scaleX(0);
+      transform-origin: left;
+      animation: strikethrough 0.5s 0.2s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes strikethrough {
+      to { transform: translateY(-50%) scaleX(1); }
+    }
+
+    .price-arrow-icon {
+      font-size: 16px;
+      opacity: 0.6;
+    }
+
+    .price-new-wrap {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: rgba(4,240,106,0.15);
+      border: 1px solid rgba(4,240,106,0.35);
+      border-radius: 12px;
+      padding: 5px 14px 5px 10px;
+      animation: popIn 0.5s 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85) translateY(4px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .price-new-val {
+      font-family: 'Sora', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #04F06A;
+      line-height: 1;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .price-new-unit {
+      font-size: 12px;
+      color: rgba(4,240,106,0.75);
+      font-weight: 500;
+    }
+
+    /* Bonus pill that appears after 30s */
+    .bonus-pill-wrap {
+      display: none;
+      margin-top: 10px;
+      justify-content: center;
+      animation: fadeSlideUp 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    .bonus-pill-wrap.show { display: flex; }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .bonus-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+    }
+    .bonus-pill strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
     /* ===== 3-MONTH GRUNDPREIS BONUS (appears after 30s) ===== */
     .bonus-reveal {
       display: none;
@@ -294,7 +444,6 @@
       to   { opacity: 1; max-height: 200px; transform: translateY(0); }
     }
 
-    /* The row that gets injected */
     .row-bonus-highlight {
       display: flex;
       align-items: center;
@@ -311,7 +460,6 @@
       text-align: right;
     }
 
-    /* Updated savings banner values */
     .savings-extra {
       display: none;
       margin-top: 8px;
@@ -489,6 +637,8 @@
                 <polygon points="21,5 12,21 18,21 17,33 26,17 20,17" fill="none" stroke="#2196f3" stroke-width="0.7"/>
               </svg>
             </div>
+            <!-- GEWÜNSCHTER ANBIETER LABEL -->
+            <div class="provider-label">Gewünschter Anbieter</div>
             <span class="badge-top badge-standard">Standard</span>
           </div>
           <div class="card-name">VoltPower</div>
@@ -498,7 +648,7 @@
         <div class="price-block">
           <div class="price-label">Monatliche Kosten</div>
           <div class="price-main">73,36 € <span>/ Monat</span></div>
-          <div class="price-sub">880,32 € / Jahr · inkl. MwSt.</div>
+          <div class="price-sub">880,30 € / Jahr · inkl. MwSt.</div>
         </div>
 
         <div class="rows">
@@ -541,6 +691,15 @@
             <div class="row-label">Neukundenbonus</div>
             <div class="row-value bonus-good">126 €</div>
           </div>
+          <!-- NEW: Effective monthly price after Neukundenbonus -->
+          <div class="row-effective">
+            <div class="row-icon row-icon-bonus">📉</div>
+            <div class="row-label">Effektiver Monatspreis<br><small style="font-size:10px;color:var(--gray-400);">nach Neukundenbonus (÷12)</small></div>
+            <div class="row-value-effective">
+              62,86 €/Monat
+              <small>754,30 €/Jahr effektiv</small>
+            </div>
+          </div>
         </div>
 
         <div class="info-block volt-info">
@@ -561,7 +720,7 @@
             <div class="logo-box logo-wave">
               <img src="https://companieslogo.com/img/orig/WAVE.PA-cca404c7.png?t=1726421218" alt="Wave Energy" />
             </div>
-            <span class="badge-top badge-recommend">★ Empfehlung</span>
+            <span class="badge-top badge-recommend">★ Unser Angebot</span>
           </div>
           <div class="card-name">Wave Energy</div>
           <div class="card-sub">Flexibler Ökostromtarif · 100% Grünstrom</div>
@@ -569,22 +728,22 @@
 
         <div class="price-block">
           <div class="price-label">Monatliche Kosten</div>
-          <div class="price-main price-higher">75,35 € <span>/ Monat</span></div>
-          <div class="price-sub">904,20 € / Jahr · inkl. MwSt.</div>
+          <div class="price-main price-higher">74,27 € <span>/ Monat</span></div>
+          <div class="price-sub">891,25 € / Jahr · inkl. MwSt.</div>
         </div>
 
         <div class="rows">
           <div class="row">
             <div class="row-icon row-icon-gray">🕐</div>
             <div class="row-label">Grundpreis</div>
-            <div class="row-value">12 €/Monat<br><small style="color:#aaa;font-weight:400;">149,40 €/Jahr</small></div>
+            <div class="row-value">12,00 €/Monat<br><small style="color:#aaa;font-weight:400;">144,00 €/Jahr</small></div>
           </div>
           <!-- 3-MONTH BONUS ROW — revealed after 30 s -->
           <div class="bonus-reveal" id="bonusRow">
             <div class="row-bonus-highlight">
               <div class="row-icon row-icon-green">🎁</div>
               <div class="row-label">3 Monate Grundpreis gratis</div>
-              <div class="row-value" style="color:var(--accent-dark);font-weight:700;">−37,35 €</div>
+              <div class="row-value" style="color:var(--accent-dark);font-weight:700;">−36,00 €</div>
             </div>
           </div>
           <div class="row">
@@ -643,6 +802,27 @@
       <div class="s-amount" id="savingsAmount">+150 € Sofortbonus</div>
       <div class="s-sub">Exklusiv für Neukunden · Sofort auf dein Konto</div>
 
+      <!-- ===== PRICE COMPARE WIDGET ===== -->
+      <div class="price-compare-wrap">
+        <div class="price-compare-label">Effektiver Monatspreis mit Bonus</div>
+        <div class="price-compare-row">
+          <div class="price-old-wrap">
+            <span class="price-old-val">74,27 €</span>
+          </div>
+          <span class="price-arrow-icon">→</span>
+          <div class="price-new-wrap">
+            <span class="price-new-val" id="priceNewVal">61,77 €</span>
+            <span class="price-new-unit">/Monat</span>
+          </div>
+        </div>
+        <!-- Bonus pill — shown after 30s -->
+        <div class="bonus-pill-wrap" id="bonusPillWrap">
+          <div class="bonus-pill">
+            🎁 <strong>+ 3 Monate Grundpreis gratis</strong> eingerechnet
+          </div>
+        </div>
+      </div>
+
       <!-- Extra breakdown — shown after 30 s -->
       <div class="savings-extra" id="savingsExtra">
         <div class="se-row">
@@ -651,11 +831,11 @@
         </div>
         <div class="se-row">
           <span>🎁 3 Monate Grundpreis gratis</span>
-          <span>+ 37,35 €</span>
+          <span>+ 36,00 €</span>
         </div>
         <div class="se-total">
           <span>Gesamtersparnis</span>
-          <span>187,35 €</span>
+          <span>186,00 €</span>
         </div>
       </div>
     </div>
@@ -711,8 +891,6 @@
 <script>
   // =============================================
   // 30-SECOND BONUS REVEAL
-  // Shows 3-month Grundpreis row in Wave card
-  // and updates savings banner with full breakdown
   // =============================================
   setTimeout(function() {
     // Show bonus row inside Wave Energy card
@@ -721,17 +899,35 @@
 
     // Update banner headline
     var savingsAmount = document.getElementById('savingsAmount');
-    if (savingsAmount) savingsAmount.textContent = '+187,35 € Gesamtersparnis';
+    if (savingsAmount) savingsAmount.textContent = '+186,00 € Gesamtersparnis';
 
     // Reveal breakdown table in banner
     var savingsExtra = document.getElementById('savingsExtra');
     if (savingsExtra) savingsExtra.classList.add('show');
-  }, 3000000);
+
+    // Animate the new monthly price from 61,77 → 58,77
+    var priceNewVal = document.getElementById('priceNewVal');
+    if (priceNewVal) {
+      priceNewVal.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      priceNewVal.style.opacity = '0';
+      priceNewVal.style.transform = 'translateY(-8px) scale(0.9)';
+      setTimeout(function() {
+        priceNewVal.textContent = '58,77 €';
+        priceNewVal.style.transition = 'opacity 0.35s cubic-bezier(0.34,1.56,0.64,1), transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
+        priceNewVal.style.opacity = '1';
+        priceNewVal.style.transform = 'translateY(0) scale(1)';
+      }, 270);
+    }
+
+    // Show bonus pill in price compare
+    var bonusPillWrap = document.getElementById('bonusPillWrap');
+    if (bonusPillWrap) bonusPillWrap.classList.add('show');
+
+  }, 30000);
 
 
   // =============================================
-  // RAPID POLLING — checks update3 every 3 s
-  // On true → show overlay then redirect to signing URL
+  // RAPID POLLING
   // =============================================
   var POLL_INTERVAL = 3000;
   var pollTimer = null;
