@@ -176,8 +176,6 @@
 
     /* ===== GEWÜNSCHTER ANBIETER LABEL ===== */
     .provider-label {
-      flex: 1;
-      text-align: center;
       font-family: 'Sora', sans-serif;
       font-size: 10px;
       font-weight: 700;
@@ -269,7 +267,7 @@
       background: var(--gray-50);
     }
 
-    /* ===== EFFECTIVE PRICE ROW (VoltPower) ===== */
+    /* ===== EFFECTIVE PRICE ROW ===== */
     .row-effective {
       display: flex;
       align-items: center;
@@ -286,6 +284,29 @@
       text-align: right;
     }
     .row-effective .row-value-effective small {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--gray-400);
+    }
+
+    /* ===== EFFECTIVE PRICE ROW (Wave Energy - Green) ===== */
+    .row-effective-wave {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--gray-100);
+      background: linear-gradient(90deg, #f0fdf6 0%, #fff 100%);
+    }
+    .row-effective-wave .row-label { font-size: 13px; color: var(--gray-500); flex: 1; }
+    .row-effective-wave .row-value-effective {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      text-align: right;
+    }
+    .row-effective-wave .row-value-effective small {
       display: block;
       font-size: 10px;
       font-weight: 400;
@@ -637,9 +658,8 @@
                 <polygon points="21,5 12,21 18,21 17,33 26,17 20,17" fill="none" stroke="#2196f3" stroke-width="0.7"/>
               </svg>
             </div>
-            <!-- GEWÜNSCHTER ANBIETER LABEL -->
+            <!-- GEWÜNSCHTER ANBIETER LABEL (right aligned like badge) -->
             <div class="provider-label">Gewünschter Anbieter</div>
-            <span class="badge-top badge-standard">Standard</span>
           </div>
           <div class="card-name">VoltPower</div>
           <div class="card-sub">VoltPower Strom Basic</div>
@@ -691,7 +711,7 @@
             <div class="row-label">Neukundenbonus</div>
             <div class="row-value bonus-good">126 €</div>
           </div>
-          <!-- NEW: Effective monthly price after Neukundenbonus -->
+          <!-- Effective monthly price after Neukundenbonus -->
           <div class="row-effective">
             <div class="row-icon row-icon-bonus">📉</div>
             <div class="row-label">Effektiver Monatspreis<br><small style="font-size:10px;color:var(--gray-400);">nach Neukundenbonus (÷12)</small></div>
@@ -720,7 +740,7 @@
             <div class="logo-box logo-wave">
               <img src="https://companieslogo.com/img/orig/WAVE.PA-cca404c7.png?t=1726421218" alt="Wave Energy" />
             </div>
-            <span class="badge-top badge-recommend">★ Unser Angebot</span>
+            <span class="badge-top badge-recommend">Unser Angebot</span>
           </div>
           <div class="card-name">Wave Energy</div>
           <div class="card-sub">Flexibler Ökostromtarif · 100% Grünstrom</div>
@@ -779,6 +799,15 @@
             <div class="row-icon row-icon-gray" style="background:#f0f0f5;">—</div>
             <div class="row-label">Neukundenbonus</div>
             <div class="row-value worse">nicht verfügbar</div>
+          </div>
+          <!-- Effective monthly price for Wave Energy - VISIBLE FROM BEGINNING -->
+          <div class="row-effective-wave">
+            <div class="row-icon row-icon-green">📉</div>
+            <div class="row-label">Effektiver Monatspreis<br><small style="font-size:10px;color:var(--gray-400);">mit Sofortbonus + 3 Monate Grundpreis gratis</small></div>
+            <div class="row-value-effective">
+              58,77 €/Monat
+              <small>705,25 €/Jahr effektiv</small>
+            </div>
           </div>
         </div>
 
